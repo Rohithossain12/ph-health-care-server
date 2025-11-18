@@ -1,0 +1,17 @@
+enum UserRole {
+    PATIENT
+    DOCTOR
+    ADMIN
+}
+
+enum UserStatus {
+    ACTIVE
+    INACTIVE
+    SUSPENDED
+}
+
+enum Gender {
+    MALE
+    FEMALE
+    OTHER
+}
