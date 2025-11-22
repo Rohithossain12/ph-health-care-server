@@ -1,23 +1,22 @@
-import z from "zod"
-
-
+import z from "zod";
 
 const createPatientValidationSchema = z.object({
     password: z.string(),
-    name: z.string({
-        error: "Name is required"
+
+    patient: z.object({
+        name: z.string().nonempty("Name is required"),
+
+        email: z
+            .string()
+            .nonempty("Email is required")
+            .min(6, "Email must be at least 6 characters")
+            .email("Please enter a valid email address"),
+
+        address: z.string().optional(),
+        contactNumber: z.string().optional(),
     }),
-    email: z
-        .string({ message: "Email is required" })
-        .min(1, { message: "Email is required" })
-        .email("Please enter a valid email address"),
-    address: z.string().optional(),
-    contactNumber: z.string().optional()
-
-})
-
-
+});
 
 export const UserValidation = {
-    createPatientValidationSchema
-}
+    createPatientValidationSchema,
+};
